@@ -11,7 +11,6 @@ class NvidiaRacecar(Racecar):
     steering_offset = traitlets.Float(default_value=0)
     steering_channel = traitlets.Integer(default_value=0)
     throttle_gain = traitlets.Float(default_value=0.8)
-    throttle_channel = traitlets.Integer(default_value=1)
     
     def __init__(self, *args, **kwargs):
         super(NvidiaRacecar, self).__init__(*args, **kwargs)
