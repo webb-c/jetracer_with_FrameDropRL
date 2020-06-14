@@ -27,19 +27,19 @@ class NvidiaRacecar(Racecar):
     def _on_throttle(self, change):
         if change['new'] > 0:
             self.motor._pca.channels[0].duty_cycle = int(0xFFFF * (change['new'] * self.throttle_gain))
-            self.motor._pca.channels[1].duty_cycle = 0
-            self.motor._pca.channels[2].duty_cycle = 0xFFFF
+            self.motor._pca.channels[1].duty_cycle = 0xFFFF
+            self.motor._pca.channels[2].duty_cycle = 0
             self.motor._pca.channels[3].duty_cycle = 0
             self.motor._pca.channels[4].duty_cycle = int(0xFFFF * (change['new'] * self.throttle_gain))
             self.motor._pca.channels[7].duty_cycle = int(0xFFFF * (change['new'] * self.throttle_gain))
-            self.motor._pca.channels[6].duty_cycle = 0
-            self.motor._pca.channels[5].duty_cycle = 0xFFFF
+            self.motor._pca.channels[6].duty_cycle = 0xFFFF
+            self.motor._pca.channels[5].duty_cycle = 0
         else:
             self.motor._pca.channels[0].duty_cycle = int(-0xFFFF * (change['new'] * self.throttle_gain))
-            self.motor._pca.channels[1].duty_cycle = 0xFFFF
-            self.motor._pca.channels[2].duty_cycle = 0
+            self.motor._pca.channels[1].duty_cycle = 0
+            self.motor._pca.channels[2].duty_cycle = 0xFFFF
             self.motor._pca.channels[3].duty_cycle = int(-0xFFFF * (change['new'] * self.throttle_gain))
             self.motor._pca.channels[4].duty_cycle = 0
             self.motor._pca.channels[7].duty_cycle = int(-0xFFFF * (change['new'] * self.throttle_gain))
-            self.motor._pca.channels[6].duty_cycle = 0xFFFF
-            self.motor._pca.channels[5].duty_cycle = 0
+            self.motor._pca.channels[6].duty_cycle = 0
+            self.motor._pca.channels[5].duty_cycle = 0xFFFF
